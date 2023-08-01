@@ -3,7 +3,7 @@ WORKDIR /app
 
 COPY . .
 RUN mkdir ~/.m2 && mkdir ~/.m2/repository
-ADD ~/.m2/settings.xml ~/.m2/settings.xml
+ADD /home/runner/.m2/settings.xml ~/.m2/settings.xml
 
 RUN ./mvnw clean package
 
