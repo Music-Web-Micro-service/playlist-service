@@ -70,6 +70,12 @@ jobs:
                 "password": "${env.GITHUB_TOKEN}"
               }
             ]
+      -
+        name: permission maven
+        run: chmod +x ./mvnw
+      -
+        name: maven package
+        run: ./mvnw clean package
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Login to Docker Hub
