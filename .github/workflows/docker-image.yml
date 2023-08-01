@@ -67,18 +67,10 @@ jobs:
               {
                 "id": "github",
                 "username": "${env.GITHUB_ACTOR}",
-                "password": "${env.GITHUB_TOKEN}",
-                "configuration": {
-                  "httpConfiguration": {
-                    "all": {
-                      "usePreemptive": "true"
-                    }
-                  }
-                }
+                "password": "${env.GITHUB_TOKEN}"
               }
             ]
-#       - name: Log in to GitHub Packages
-#         run: echo "${{ env.GITHUB_TOKEN }}" | gh auth login --with-token
+
       -
         name: mvn permssion
         run: chmod +x ./mvnw
