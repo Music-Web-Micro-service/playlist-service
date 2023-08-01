@@ -1,11 +1,7 @@
 FROM openjdk:17
 WORKDIR /app
 
-COPY . .
-RUN mkdir ~/.m2 && mkdir ~/.m2/repository
-COPY ~/.m2/settings.xml ~/.m2/settings.xml
-
-RUN ./mvnw clean package
+COPY ./target/playlist-service-0.0.1-SNAPSHOT.jar ./target/playlist-service-0.0.1-SNAPSHOT.jar
 
 EXPOSE 8086
 
