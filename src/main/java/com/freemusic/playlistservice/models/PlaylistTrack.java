@@ -16,12 +16,13 @@ import lombok.Setter;
 public class PlaylistTrack {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int playlistTrackId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "playlistId", nullable = false)
+    @JoinColumn(name = "playlist_id", nullable = false)
     @JsonIgnore
     private Playlist playlist;
-    private int playlistId;
+
     private int trackId;
 }

@@ -9,5 +9,5 @@ import java.util.List;
 public interface PlaylistTrackRepository extends JpaRepository<PlaylistTrack,Integer> {
     List<PlaylistTrack> getPlaylistTracksByPlaylist(Playlist playlist);
     PlaylistTrack queryByPlaylistAndTrackId(Playlist playlist, Integer trackId);
-    PlaylistTrack getPlaylistTracksByPlaylistIdAndAndTrackId(Integer playlistId, Integer playlistTrackId);
+    PlaylistTrack findByPlaylistPlaylistIdAndTrackId(Integer playlistId, Integer playlistTrackId);
 }

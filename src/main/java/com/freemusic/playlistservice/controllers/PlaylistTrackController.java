@@ -1,5 +1,6 @@
 package com.freemusic.playlistservice.controllers;
 
+import com.freemusic.playlistservice.messages.PlaylistTrackMessage;
 import com.freemusic.playlistservice.models.Playlist;
 import com.freemusic.playlistservice.models.PlaylistTrack;
 import com.freemusic.playlistservice.services.PlaylistTrackService;
@@ -25,10 +26,24 @@ public class PlaylistTrackController {
     }
 
     @PostMapping
-    public ResponseEntity<PlaylistTrack> addTrackToPlaylist(@RequestBody PlaylistTrack track) {
+    public ResponseEntity<PlaylistTrack> addTrackToPlaylist(@RequestBody PlaylistTrackMessage trackMessage) {
+        if (trackMessage == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        Playlist playlist = playlistService.getPlayList(trackMessage.getPlaylistId());
+        if (playlist == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        PlaylistTrack track = new PlaylistTrack();
+        track.setPlaylist(playlist);
+        track.setTrackId(trackMessage.getTrackId());
+
         PlaylistTrack addedTrack = playlistTrackService.addTrackToPlaylist(track);
         return ResponseEntity.status(HttpStatus.CREATED).body(addedTrack);
     }
+
 
     @GetMapping("/playlist/{playlistId}")
     public ResponseEntity<List<PlaylistTrack>> getTrackInPlaylist(@PathVariable("playlistId") Long playlistId) {

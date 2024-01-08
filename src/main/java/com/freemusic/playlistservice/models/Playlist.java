@@ -17,6 +17,7 @@ import java.util.List;
 @Table(name="playlists")
 public class Playlist {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int playlistId;
 
     private int userId;

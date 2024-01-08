@@ -20,7 +20,7 @@ public class PlaylistServiceImpl implements PlaylistService {
 
     @Override
     public Playlist getPlayList(int id) {
-        return playListRepository.getReferenceById(id);
+        return playListRepository.findById(id).orElse(null);
     }
 
     @Override

@@ -43,7 +43,7 @@ public class PlaylistTrackServiceImpl implements PlaylistTrackService {
 
     @Override
     public PlaylistTrack getTrack(Playlist playlist, int trackId) {
-        return playListTrackRepository.getPlaylistTracksByPlaylistIdAndAndTrackId(playlist.getPlaylistId(), trackId);
+        return playListTrackRepository.findByPlaylistPlaylistIdAndTrackId(playlist.getPlaylistId(), trackId);
     }
 
 
